@@ -1,0 +1,203 @@
+#shape {position: absolute; z-index: 51; visibility: visible; left: 251px; top:0px;}
+
+body {	font-family: Arial, Helvetica, sans-serif; 
+		font-size: 12px; 
+		font-style: normal; 
+		font-weight: normal; 
+		color: #999999; 
+		sdbackground-color: #ffffff;
+		sdbackground-image: URL("images/stripe.gif");
+		margin-top: 0;
+		margin-right : 10;
+		margin-left : 50;
+		margin-bottom : 0;
+	  }
+	  
+.sansmargin {	
+		font-family: Arial, Helvetica, sans-serif; 
+		font-size: 12px; 
+		font-style: normal; 
+		font-weight: normal; 
+		color: #999999; 
+		sdbackground-color: #ffffff;
+		sdbackground-image: URL("images/stripe.gif");
+		margin-top: 0;
+		margin-right : 10;
+		margin-left : 0;
+		margin-bottom : 0;
+	  }
+	
+table   { 	border : 0;
+			padding-bottom : 0;
+			padding-left : 0;
+			padding-right : 0;
+			padding-top : 0;
+			font-size: 12px; }
+
+TD{  		font-family: Arial, Helvetica, sans-serif; 
+			color: gray;
+			font-size: 11px; }
+		 
+A{  		font-family: Arial, Helvetica, sans-serif; 
+			color: #999999;
+			font-size: 11px;
+			text-decoration : none; }
+			
+A:Hover{  		font-family: Arial, Helvetica, sans-serif; 
+			color: #999999;
+			font-size: 11px;
+			text-decoration : underline; }
+			
+			
+A.link{  	font-family: Arial, Helvetica, sans-serif; 
+			color: gray;
+			font-size: 13px;
+			text-decoration : none; }
+			
+A.link:Hover{  		font-family: Arial, Helvetica, sans-serif; 
+			color: white;
+			font-size: 13px;
+			text-decoration : none; }
+			
+			
+			
+						
+.copy{
+	font-family: Helvetica, News Gothic MT Arial, sans-serif;
+	color: #999999;
+	font-size: 11px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-right:5px;
+	padding-left:10px;
+	margin-bottom : 3px;
+	vertical-align: top;	
+			 }
+			 
+A.blue{	
+	font-family: Helvetica, News Gothic MT Arial, sans-serif;
+	color: #49A9D2;
+	font-size: 11px;
+			 }
+			 
+A.blue:Hover{	
+	font-family: Helvetica, News Gothic MT Arial, sans-serif;
+	color: #49A9D2;
+	font-size: 11px;
+	text-decoration : underline;
+			 }			 
+			 
+A.nav{
+	font-family: Helvetica, News Gothic MT Arial, sans-serif;
+	color: #ffffff;
+	font-size: 16px;
+	padding-top: 2px;
+	padding-bottom: 3px;
+	padding-right:5px;
+	padding-left:10px;
+	margin-bottom : 5px;
+	vertical-align: bottom;
+			 }
+			 			 
+A.nav:Hover{
+	font-family: Helvetica, News Gothic MT Arial, sans-serif;
+	color: #ffffff;
+	font-size: 16px;
+	text-decoration : underline;
+			 }
+			 
+
+
+
+.white {  	background-color:  #FFFFFF;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #666666;
+			padding: 0px;
+			font-size: 11px;   }			 			
+
+.tblehead { background-color:  #E2F3FB;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			font-weight: bold;
+			color: #666666;
+			padding: 2px;
+			font-size: 11px;   } 
+			
+.tbleheadnocolor {
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			font-weight: bold;
+			color: #666666;
+			padding: 2px;
+			font-size: 11px;   } 
+			
+.tablerow { 
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #666666;
+			padding: 2px;
+			font-size: 11px;   }
+			
+.dkturq {  	background-color:  #B5E2F9;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #666666;
+			font-size: 11px;   }
+			
+.dkblue {  	background-color:  #49A9D2;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #49A9D2;
+			font-size: 12px;   }
+
+
+.ltturq {  	background-color:  #D6EEFA;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #666666;
+			padding: 2px;
+			font-size: 11px;   }
+
+
+.calhead { background-color:  #D6EEFA;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			font-weight: bold;
+			color: #49A9D2;
+			padding: 2px;
+			font-size: 14px;   }
+			
+.turqblue { background-color:  #D6EEFA;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #49A9D2;
+			padding: 2px;
+			font-size: 11px;   }
+			
+
+			
+.header {  	background-color:  #FFFFFF;
+			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+			color: #666666;
+			font-size: 16px;   }
+			
+
+
+.field    { color: #666666;                        
+			font-size: 11px;                        
+			margin: 0px;                        
+			padding: 0px; 
+			vertical-align: baseline;
+			border-style: solid;
+			border-width: 1;
+			border-color:  #cccccc;                                                
+			height: 21px;     }
+			
+.carea    { color: #666666;                        
+			font-size: 11px;                        
+			margin: 0px;                        
+			padding: 0px; 
+			vertical-align: baseline;
+			border-style: solid;
+			border-width: 1;
+			border-color:  #cccccc;     }
+			
+.pulldown  { color: #666666;                        
+			 font-size: 11px;                        
+			 margin: 0px;                        
+			 padding: 0px;                        
+			 border-style: none;                        
+			 border-color:  #999999;                                                
+			 height: 21px;    }
