@@ -23,7 +23,7 @@
 	  We're glad you're back.  Golfer and Group scores are updated every 4 minutes...
 	</div>
     <div id="mygroupsboard" align="center" style="padding-bottom:50px;">
-      <div class="section_head">Group Leaderboard - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
+      <div class="section_head">OFFICIAL Group Leaderboard - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
 			<cfinclude template="portlet_group_leaderboard.cfm">
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>

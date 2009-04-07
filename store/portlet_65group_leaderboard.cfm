@@ -65,7 +65,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 <cfquery datasource="#sDSN2#" name="qAllTeamsInGroup" >
 	SELECT 
 		tE.entrantid, tE.lname as entrantLastName, tE.fname as entrantFirstName,
-		tEG.teamselectedid, tEG.finaltiebreakerscore as tiebreaker, tEG.latestteamnetscore as latest_teamnetscore
+		tEG.teamselectedid, tEG.finaltiebreakerscore as tiebreaker, tEG.latest65netscore as latest_teamnetscore
 	FROM 
 		tentrant tE 
 		INNER JOIN tentrantgroup tEG ON tE.entrantid = tEG.entrantID
@@ -74,7 +74,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		AND
 		tEG.eventid = #SESSION.eventid#
 		AND
-		tEG.madecut = 1
+		tEG.65madecut = 1
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 </cfquery>
@@ -187,8 +187,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		  <th class="tblehead">Golfer <cfoutput>#counter#</cfoutput></th>
 			</cfloop>
 	    <th class="tblehead">EoM Hcp</th>
-			<th class="tblehead">Team Gross</th> 
-			<th class="tblehead">Team Total NET</th>
+			<th class="tblehead"><div>Team</div><div style="color:red;font-weight:bold;">TOP 5/6</div><div>Gross</div></th> 
+			<th class="tblehead">Team<div style="color:red;font-weight:bold;">TOP 5/6</div>NET</th>
     </tr>
 		
 			<!--- <cfset countinloop = 0>   --->
@@ -211,7 +211,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 							  <!--- not a tie, use next place --->
 							  <cfset outputplace = currentplace/>
 							  Eyeing the							  
-							  <div class="evenpartextongreenlarge">"#qYourGroup.PoolGroupName#"</div>Title
+							  <div class="evenpartextongreenlarge">6-count-5</div>Title
 						<cfelse>
 							  <!--- tie, use first tied place --->
 							  <cfset outputplace = outputplace/>
@@ -353,19 +353,19 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<td height="40"  class="#classname#" align="center">--</td>
 				</cfif>
 	            
-				<!--- ** Team Gross COLUMN N (10 normally) ** --->
+				<!--- ** Team Gross COLUMN N (10 normally) ** 6 COUNT TOP 5--->
 				<td height="40" class="#classname#" align="center" nowrap="true">
   				  <cfquery datasource="#sDSN2#" name="qSumTeamScore" >
-						SELECT SUM(CurrentScoreRelPar) as TeamTotal
-						FROM tgolfer tG, tteamselected tTS
-						WHERE 
-							tTS.golferid = tG.GolferID
-							AND 
-							tTS.groupid = #pagegroupid#
-							AND
-							tTS.entrantID = #qAllTeamsinGroup.entrantID#
-							AND
-							tTS.eventid = #SESSION.eventid#
+						  SELECT SUM(g.currentscorerelpar) as TeamTotal
+							FROM tteamselected ts 
+							  left outer join tgolfer g ON g.golferid = ts.golferid
+							  left outer join tentrantgroup eg ON eg.teamselectedid = ts.teamselectedid
+							WHERE ts.entrantid = #qAllTeamsinGroup.entrantID#
+							AND ts.groupid = #pagegroupid#
+							AND ts.eventid = #SESSION.eventid# 
+							AND eg.65madecut = 1
+							ORDER BY g.currentscorerelpar asc
+							LIMIT 5
 				  </cfquery>
 					  <cfif #qSumTeamScore.TeamTotal# GT 0>
 						  <div style="font-size:14px;font-weight:300;color:gray;"><span>+ #qSumTeamScore.TeamTotal#</span></div>
