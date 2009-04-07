@@ -7,6 +7,8 @@ h1 {
   text-align:center;
 }
 
+
+
 h2 {
   font-size: 16px;
   line-height:20px;
@@ -19,6 +21,18 @@ h3 {
 p {
   font-size: 12px;
 }   
+
+.ltturq {  	background-color:  #DDFFCC;
+	font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+	color: #666666;
+	padding: 2px;
+	font-size: 11px;   }
+
+.yourgroup {  	background-color:  #FFFF33;
+	font-family: Helvetica, News Gothic MT Arial, sans-serif; 
+	color: #444444;
+	padding: 2px;
+	font-size: 11px;   }
 
 #googleads{
   text-align:center;
@@ -717,3 +731,5 @@ color:#009900;
 		border-bottom: 1px single;
 		background-color: #000000;
 		cursor: help;   }
+		
+

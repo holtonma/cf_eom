@@ -12,12 +12,12 @@
   <cfinclude template="eom_tabs.cfm">      
   
   <div id="group_leaderboard" align="center">
-  <div class="subtle">Welcome
+  <div class="subtle" align="left" style="text-align:left;">Welcome
 	  <cfif IsDefined("SESSION.patronfirstname")><cfoutput><b>#SESSION.patronfirstname# #SESSION.patronlastname#</b></cfoutput></cfif>!
-	  We're glad you're back.  Golfer and Group scores are updated every 4 minutes...
+	  This page is undergoing <b>BETA</b> testing starting with the 2009 Masters.  We heard your <a href="http://getsatisfaction.com/eyeonmajors" target="_blank">feedback</a>, and have responded.  The OFFICIAL Global and Group Pools will always be select-6-and-count-all-6 with handicaps determined by 'The Committee', but we offer this alternate 6-count-5 option below as a side-game for you and your group's enjoyment!
 	</div>
     <div id="mygroupsboard" align="center" style="padding-bottom:50px;">
-      <div class="section_head">Group Leaderboard - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
+      <div class="section_head"><b>6 count 5 Alternate Format</b> - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
 			<cfinclude template="portlet_65group_leaderboard.cfm">
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>

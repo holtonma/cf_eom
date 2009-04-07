@@ -1,16 +1,3 @@
-<style type="text/css">
-		.ltturq {  	background-color:  #DDFFCC;
-			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
-			color: #666666;
-			padding: 2px;
-			font-size: 11px;   }
-
-		.yourgroup {  	background-color:  #FFFF33;
-			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
-			color: #444444;
-			padding: 2px;
-			font-size: 11px;   }
-</style>
 
 <cfset nettotalscore = 0>
 <cfset currentplace = 0>
@@ -70,12 +57,11 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
    AND groupid = #SESSION.patrongroupid#
    AND eventid = #SESSION.eventid#
 </cfquery>
-
-
 <!--- make sure to include this before tourney starts 
 	AND
 	tEG.entrantid IN (#fullsquadlist#)
- --->
+--->
+
 <cfquery datasource="#sDSN2#" name="qAllTeamsInGroup" >
 	SELECT 
 		tE.entrantid, tE.lname as entrantLastName, tE.fname as entrantFirstName,
@@ -89,7 +75,6 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.eventid = #SESSION.eventid#
 		AND
 		tEG.madecut = 1
-	
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 </cfquery>
@@ -124,14 +109,13 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 <cfset strRandomMajorFactover = "Major fact: In 1956, Jack Burke, Jr. won The Masters by one-stroke over Ken Venturi with a total of +1, 289 strokes." />
 <cfset strRandomMajorFacteven = "Major fact: In 1966, Jack Nicklaus finished with an EVEN par 288 total, and won his 2nd consecutive Masters, and his 3rd Green Jacket overall." />
 
-				
+
 <cfset winnershare = #qAllTeamsInGroup.recordcount# * 10 />
 <cfset numCutline10shot = #qTenShotCutline.CutLessTen# + 10/>
 <cfset numCutline10shot = 1>
 <cfset strCutline = "#numCutline10shot#" />
 <form action="groupleaderboard_manage.cfm" method="post">
   
-  <!--- --->
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
     <cfif 1 eq 1>
@@ -148,8 +132,6 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  </div>
 	</div> 
 	
-  
-  
   <cfset ccutline = -1/>  <!--- set to 1000 b/c it's after cutline --->
   <cfif #ccutline# EQ 0>
 	 <cfset strCutline = "E" />
@@ -170,13 +152,10 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 <cfoutput>
 	<div style="font-size:x-small;font-weight:400;color:gray;" align="center">
 	Leaderboard last updated : 
-	#DateFormat(qLastUpdated.DateTimeLastUpdated, "medium")# #TimeFormat(qLastUpdated.DateTimeLastUpdated, "hh:mm:ss")#<!--- #qCutline.LastUpdatedTime# --->
+	#DateFormat(qLastUpdated.DateTimeLastUpdated, "medium")# #TimeFormat(qLastUpdated.DateTimeLastUpdated, "hh:mm:ss")#
+	<!--- #qCutline.LastUpdatedTime# --->
 	CST (Golf, Illinois)
 	</div>
-	<!--- 
-		<div style="font-size: small; font-weight:400;" align="left">
-	You are currently ranked number  #currentRanking# </span> in the world on EyeOnMajors.com</span>	  <br>
-	</div> --->
 </cfoutput> 
 	
 	<!--- determine number of players required by checking that group's rules... --->
@@ -185,6 +164,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		FROM tgrouprules
 		WHERE groupid = #pagegroupid#
 	</cfquery>
+	
 	<cfif qGroupRules.RecordCount eq 0>
 		<cfset NumGolfersToSelect = 6>
 	<cfelse>
