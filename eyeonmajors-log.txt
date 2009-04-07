@@ -1,0 +1,22 @@
+6/6/2005 3:52:44 AM	Msg	MySQL database backup started
+6/6/2005 3:52:44 AM	Msg	Connect to Source Server localhost
+6/6/2005 3:52:44 AM	Msg	Connect to Target Server localhost
+6/6/2005 3:52:45 AM	Msg	Get table structure for: activeinviteeroster
+6/6/2005 3:52:45 AM	Msg	Get table data for: activeinviteeroster
+6/6/2005 3:52:45 AM	Msg	Get table structure for: admineom
+6/6/2005 3:52:45 AM	Msg	Get table data for: admineom
+6/6/2005 3:52:45 AM	Msg	Get table structure for: eomhandicaps
+6/6/2005 3:52:45 AM	Msg	Get table data for: eomhandicaps
+6/6/2005 3:52:45 AM	Msg	Get table structure for: golfer
+6/6/2005 3:52:46 AM	Msg	Get table data for: golfer
+6/6/2005 3:52:46 AM	Msg	Get table structure for: messageboard
+6/6/2005 3:52:46 AM	Msg	Get table data for: messageboard
+6/6/2005 3:52:46 AM	Msg	Get table structure for: poolgroup
+6/6/2005 3:52:46 AM	Msg	Get table data for: poolgroup
+6/6/2005 3:52:46 AM	Msg	Get table structure for: poolperson
+6/6/2005 3:52:46 AM	Msg	Get table data for: poolperson
+6/6/2005 3:52:46 AM	Msg	Get table structure for: selectedteams
+6/6/2005 3:52:46 AM	Msg	Get table data for: selectedteams
+6/6/2005 3:52:46 AM	Msg	Saving dump script file
+6/6/2005 3:52:46 AM	Msg	Start dump to Target Server
+6/6/2005 3:52:47 AM	Msg	Dump completed successfully.
