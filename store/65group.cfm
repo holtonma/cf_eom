@@ -18,7 +18,7 @@
 	</div>
     <div id="mygroupsboard" align="center" style="padding-bottom:50px;">
       <div class="section_head">Group Leaderboard - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
-			<cfinclude template="portlet_group_leaderboard.cfm">
+			<cfinclude template="portlet_65group_leaderboard.cfm">
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>
 			<!--- 
