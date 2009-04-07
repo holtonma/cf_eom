@@ -1,0 +1,4 @@
+
+<cfoutput>
+#GetAuthUser()#
+</cfoutput>

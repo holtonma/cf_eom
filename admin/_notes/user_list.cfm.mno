@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<info>
+	<infoitem key="UD_qUserTypes" value="name:user_type_id;datatype:,name:type;datatype:" />
+	<infoitem key="UD_qUsersCached" value="name:user_id;datatype:,name:user_type_id;datatype:,name:name_last;datatype:,name:name_first;datatype:,name:email;datatype:,name:sign_up_date;datatype:,name:type;datatype:" />
+</info>
