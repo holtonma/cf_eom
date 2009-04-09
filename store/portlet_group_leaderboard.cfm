@@ -93,7 +93,10 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.eventid = #SESSION.eventid#
 		AND
 		tEG.madecut = 1
-	
+		
+	  AND
+		tEG.entrantid IN (#fullsquadlist#)
+		
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 </cfquery>

@@ -1,6 +1,6 @@
 <cfquery datasource="#sDSN2#" name="qTop10Golfers">
 SELECT tG.GolferFirstName, tG.GolferLastName, tG.CurrentScoreRelPar, tG.thru, tG.position, tH.numstrokes as handicap
-FROM tgolfer tG LEFT OUTER JOIN thandicaps tH ON tG.golferid = tH.golferid
+FROM tgolfer tG LEFT OUTER JOIN thandicaps tH ON tG.golferid = tH.golferid AND tH.eventID = #SESSION.eventid#
 WHERE tG.active = 1 AND tG.eventid = #SESSION.eventid#
 ORDER BY tG.CurrentScoreRelPar ASC, tG.thru DESC, tG.GolferLastName ASC
 LIMIT 10

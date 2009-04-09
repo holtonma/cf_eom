@@ -84,33 +84,7 @@
 </cfoutput>
 
 
-<!--- for now put this query here, but move this out of the page into a CFC later --->
-<cfoutput>
-	<!--- 
-	WHERE active = 1
-	AND madecut = 1
-	 --->
-<cfquery name="qGetAllActiveGolfers" datasource="eyeon2" dbtype="query">
-	SELECT GolferID, golferfirstname, golferlastname, currentscorerelpar, golferimage, active
-	FROM tgolfer
-	WHERE 1 = 1
-	AND madecut = 1
-</cfquery>
-
-<!--- WHERE madecut = 1
-	#activestring#
-	#orderbystring# --->
-</cfoutput>
-<!--- WHERE active = 1 --->
-
-<cfquery name="qNumGolfersOnFullSquads" datasource="#sDSN2#">
-	SELECT count(autoid) as numgolfersonfullsquads
-	FROM tteamselected
-	WHERE golferid > 0
-	AND eventid = #SESSION.eventid#
-</cfquery>
-
-<cfoutput>Last updated: #DateFormat(Now(), "mm/dd/yyyy")# #TimeFormat(Now(), "hh:mm:ss tt")#</cfoutput>
+<cfoutput>Last updated 6-count-6 totals: #DateFormat(Now(), "mm/dd/yyyy")# #TimeFormat(Now(), "hh:mm:ss tt")#</cfoutput>
 
 
 
