@@ -211,6 +211,37 @@ ORDER BY CurrentScoreRelPar ASC, GolferLastName ASC
 				<div style="background-color:#colorstr#; color:#colorstr#; width:#percentageselected#%"></span><span style="color:black;text-align:center;">#percentageselected#%</div>
 			</div>
 		</td>
+		<td class="ltturq">
+		  <cfif r1 lt 72><cfset cls = "red"><cfelseif r1 eq 72><cfset cls = "green"><cfelse><cfset cls = "black"></cfif>
+			<cfif r1 gt 0>
+		    <span style="color:#cls#;">#R1#</span>
+		  </cfif>
+		</td>
+		<td class="ltturq">
+		  <cfif r2 lt 72><cfset cls = "red"><cfelseif r2 eq 72><cfset cls = "green"><cfelse><cfset cls = "black"></cfif>
+		  <cfif r1 gt 0>
+			  <span style="color:#cls#;">#R2#</span>
+			</cfif>
+		</td>
+		<td class="ltturq">
+		  <cfif r3 lt 72><cfset cls = "red"><cfelseif r3 eq 72><cfset cls = "green"><cfelse><cfset cls = "black"></cfif>
+		  <cfif r1 gt 0>
+			  <span style="color:#cls#;">#R3#</span>
+			</cfif>
+		</td>
+		<td class="ltturq">
+		  <cfif r4 lt 72><cfset cls = "red"><cfelseif r4 eq 72><cfset cls = "green"><cfelse><cfset cls = "black"></cfif>
+		  <cfif r1 gt 0>
+			  <span style="color:#cls#;">#R4#</span>
+			</cfif>
+		</td>
+		<td class="ltturq" align="center">
+			<cfif Total gt 0>
+		    <b>#Total#</b>
+		  <cfelse>
+			  <b>-</b>
+		  </cfif>
+		</td>
 		<td class="ltturq" align="center">
 			<cfif #qAllGolfers_MC.CurrentScoreRelPar# EQ 0>
 				<div class="evenpartextongreen">E</div> 

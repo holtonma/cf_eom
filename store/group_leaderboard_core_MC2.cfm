@@ -166,7 +166,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = -1 />
-  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line was :: <span class="worldrankingblack">+ 8</span> </div> 
+  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line was :: <span class="worldrankingblack">+ 1</span> </div> 
   <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsInGroup.recordcount#</cfoutput> make the cut</div> <br> --->
 <cfquery name="qLastUpdated" datasource="#sDSN2#">
 	SELECT DateTimeLastUpdated
@@ -174,17 +174,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	WHERE eventid = #SESSION.eventid#
 </cfquery>  
 
-<cfoutput>
-	<div style="font-size: small; font-weight:400;" align="left">
-	Leaderboard last updated : 
-	#DateFormat(qLastUpdated.DateTimeLastUpdated, "medium")# #TimeFormat(qLastUpdated.DateTimeLastUpdated, "hh:mm:ss")#<!--- #qCutline.LastUpdatedTime# --->
-	CST (Golf, Illinois)
-	</div>
-	<!--- <div style="font-size: small; font-weight:400;" align="left">
-	You are currently ranked number<!--- #currentRanking# ---></span> in the world on EyeOnMajors.com</span>	  <br>
-	</div> --->
-</cfoutput> 
-	
+
   
   <!--- determine number of players required by checking that group's rules... --->
 	<cfquery name="qGroupRules" datasource="#sDSN2#">

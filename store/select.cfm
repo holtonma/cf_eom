@@ -11,7 +11,7 @@
 	
 <body id="bSelect">
   <cfinclude template="eom_tabs.cfm">      
-  <cfif 1 eq 1> <!--- change to eq when selection period is underway, neq when tourney is underway --->
+  <cfif 1 neq 1> <!--- change to eq when selection period is underway, neq when tourney is underway --->
   <div id="byline">Select 6 Players.  Note the handicaps.  All of your players must make the cut.  Godspeed.</div>
   <div id="myteamselect">
     <div class="section_head">Select Your Squad for this Major:</div>

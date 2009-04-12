@@ -1,27 +1,9 @@
 
-
-<style type="text/css">
-		.ltturq {  	background-color:  #DDFFCC;
-			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
-			color: #666666;
-			padding: 2px;
-			font-size: 11px;   }
-
-		.yourgroup {  	background-color:  #FFFF33;
-			font-family: Helvetica, News Gothic MT Arial, sans-serif; 
-			color: #444444;
-			padding: 2px;
-			font-size: 11px;   }
-</style>
-
-<cfset nettotalscore = 0 />
-<cfset currentplace = 0 />
-<cfset outputplace = 0 />
-<cfset teamTotNETprev = -1234 />
-<!--- tiedPLbool: 0 = not tied; 1 = tied --->
-<cfset tieldPLbool = 0 />
-<!--- <cfset tourneyName = "PGA Championship" /> --->
-
+<cfset nettotalscore = 0>
+<cfset currentplace = 0>
+<cfset outputplace = 0>
+<cfset teamTotNETprev = -1234 >
+<cfset tieldPLbool = 0 /> <!--- tiedPLbool: 0 = not tied; 1 = tied --->
 
 <cfparam name="SESSION.currenteventid" default="#SESSION.eventid#">
 
@@ -55,6 +37,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	AND
 	tTS.eventid = #SESSION.eventid#
 </cfquery>
+
 <cfoutput query="qAllFullSquadEntrantIDs">
 	<cfset fullsquadlist=#ListAppend(fullsquadlist, qAllFullSquadEntrantIDs.entrantid)#>   
 </cfoutput>
@@ -74,16 +57,15 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
    AND groupid = #SESSION.patrongroupid#
    AND eventid = #SESSION.eventid#
 </cfquery>
-
-
 <!--- make sure to include this before tourney starts 
 	AND
 	tEG.entrantid IN (#fullsquadlist#)
- --->
+--->
+
 <cfquery datasource="#sDSN2#" name="qAllTeamsInGroup" >
 	SELECT 
 		tE.entrantid, tE.lname as entrantLastName, tE.fname as entrantFirstName,
-		tEG.teamselectedid, tEG.finaltiebreakerscore as tiebreaker, tEG.latestteamnetscore as latest_teamnetscore
+		tEG.teamselectedid, tEG.finaltiebreakerscore as tiebreaker, tEG.latest65netscore as latest_teamnetscore
 	FROM 
 		tentrant tE 
 		INNER JOIN tentrantgroup tEG ON tE.entrantid = tEG.entrantID
@@ -92,13 +74,12 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		AND
 		tEG.eventid = #SESSION.eventid#
 		AND
-		tEG.madecut = 1
-		
-	  AND
+		tEG.65madecut = 0
+		AND
 		tEG.entrantid IN (#fullsquadlist#)
 		
 	ORDER BY 
-		tEG.latestteamnetscore ASC, entrantLastName ASC
+		tEG.latest65netscore ASC, entrantLastName ASC
 </cfquery>
 <cfset totalnumingroup = #qAllTeamsInGroup.RecordCount#>
 
@@ -131,17 +112,16 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 <cfset strRandomMajorFactover = "Major fact: In 1956, Jack Burke, Jr. won The Masters by one-stroke over Ken Venturi with a total of +1, 289 strokes." />
 <cfset strRandomMajorFacteven = "Major fact: In 1966, Jack Nicklaus finished with an EVEN par 288 total, and won his 2nd consecutive Masters, and his 3rd Green Jacket overall." />
 
-				
+
 <cfset winnershare = #qAllTeamsInGroup.recordcount# * 10 />
 <cfset numCutline10shot = #qTenShotCutline.CutLessTen# + 10/>
 <cfset numCutline10shot = 1>
 <cfset strCutline = "#numCutline10shot#" />
 <form action="groupleaderboard_manage.cfm" method="post">
   
-  
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
-    <!--- 
+    <!---
     <cfif 1 eq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
@@ -151,14 +131,12 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		</cfif>
 		--->
 		
-    <div align="center" style="border:4px solid green;padding:5px;">
+    <div align="center" style="border:4px solid red;padding:5px;">
 		  <!--- <cfoutput>#qEventInfo.eventyear# #qEventInfo.eventname#</cfoutput> Leaderboard  --->
-		  <div><cfoutput>#totalnumingroup#</cfoutput> entrants competing</div>
+		  <div><cfoutput>#totalnumingroup#</cfoutput> entrants MISSED CUT in 6-count-5 format</div>
 	  </div>
 	</div> 
 	
-  
-  
   <cfset ccutline = -1/>  <!--- set to 1000 b/c it's after cutline --->
   <cfif #ccutline# EQ 0>
 	 <cfset strCutline = "E" />
@@ -175,18 +153,6 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	FROM tevents
 	WHERE eventid = #SESSION.eventid#
 </cfquery>  
-
-<cfoutput>
-	<div style="font-size:x-small;font-weight:400;color:gray;" align="center">
-	Leaderboard last updated : 
-	#DateFormat(qLastUpdated.DateTimeLastUpdated, "medium")# #TimeFormat(qLastUpdated.DateTimeLastUpdated, "hh:mm:ss")#<!--- #qCutline.LastUpdatedTime# --->
-	CST (Golf, Illinois)
-	</div>
-	<!--- 
-		<div style="font-size: small; font-weight:400;" align="left">
-	You are currently ranked number  #currentRanking# </span> in the world on EyeOnMajors.com</span>	  <br>
-	</div> --->
-</cfoutput> 
 	
 	<!--- determine number of players required by checking that group's rules... --->
 	<cfquery name="qGroupRules" datasource="#sDSN2#">
@@ -194,6 +160,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		FROM tgrouprules
 		WHERE groupid = #pagegroupid#
 	</cfquery>
+	
 	<cfif qGroupRules.RecordCount eq 0>
 		<cfset NumGolfersToSelect = 6>
 	<cfelse>
@@ -216,8 +183,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		  <th class="tblehead">Golfer <cfoutput>#counter#</cfoutput></th>
 			</cfloop>
 	    <th class="tblehead">EoM Hcp</th>
-			<th class="tblehead">Team Gross</th> 
-			<th class="tblehead">Team Total NET</th>
+			<th class="tblehead"><div>Team</div><div style="color:red;font-weight:bold;">TOP 6/6</div><div>Gross</div></th> 
+			<th class="tblehead">Team<div style="color:red;font-weight:bold;">TOP 5/6</div>NET</th>
     </tr>
 		
 			<!--- <cfset countinloop = 0>   --->
@@ -233,24 +200,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<cfset classnamescore = "largegrntxt">
 				</cfif>
 		        <!--- ** COLUMN 1 ** --->
-		        <td height="40"  align="center" class="#classname#">
-					<cfset currentplace = currentplace + 1 />
-					<cfif currentplace eq 1 >
-						<cfif tieldPLbool EQ 0>
-							  <!--- not a tie, use next place --->
-							  <cfset outputplace = currentplace/>
-							  Eyeing the							  
-							  <div class="evenpartextongreenlarge">"#qYourGroup.PoolGroupName#"</div>Title
-						<cfelse>
-							  <!--- tie, use first tied place --->
-							  <cfset outputplace = outputplace/>
-							  ...eyeing <br>
-							  the <br>
-							  <div class="evenpartextongreenlarge">"#qSpecificGroupID.PoolGroupName#"<br>Group<br>Championship</div>
-						</cfif>
-					<cfelse>
-						#currentplace#
-					</cfif>
+		    <td height="40"  align="center" class="#classname#">
+					<span style="color:red;font-size:14px;">CUT!</span>
 				</td>
 				<!--- ** COLUMN 2 ** --->
 				<td height="40" class="#classname#">
@@ -269,7 +220,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	      <cfquery name="qATeamOfGolfers" datasource="#sDSN2#">
 				  	SELECT 
 				  		tTS.teamselectedid, tTS.entrantid, tTS.groupid, tTS.golferid, tTS.eventid,
-				  		tG.GolferFirstName, tG.GolferLastName, tG.CurrentScoreRelPar, tG.GolferImage, tG.thru
+				  		tG.GolferFirstName, tG.GolferLastName, tG.CurrentScoreRelPar, tG.GolferImage, tG.thru, tG.madecut
 				  	FROM 
 				  		tteamselected tTS INNER JOIN tgolfer tG ON tTS.golferid = tG.GolferID
 				  	WHERE 
@@ -284,35 +235,32 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<cfif diffBTrsANDrequired eq 0> <!--- the correct number of golfers have been selected --->
 						<cfloop query="qATeamOfGolfers" >
 							<td height="40" align="center" class="#classname#">
-								<!--- image --->
 								<div><img src="#qATeamOfGolfers.GolferImage#.gif" /></div> 
-								<!--- lastname --->
 								<div>#qATeamOfGolfers.GolferLastName#</div>
-								<!--- scorerelpar, with formatted output (R, G, black) --->
 								<cfif qATeamOfGolfers.CurrentScoreRelPar EQ 0>
 								<div class="coreboardeven" title="#strRandomMajorFacteven#"> E </div>
 								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div> 
-									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
-										<div class="cut">CUT?</div>
+									<cfif #qATeamOfGolfers.madecut# eq 0 >
+										<div class="cut">CUT!</div>
 									<cfelse>
 										<div class="#classname#" style="color:##DDFFCC">ok!</div>
-									</cfif> --->
+									</cfif>
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar LT 0>
 								<div class="coreboardsub" title="#strRandomMajorFact#">#qATeamOfGolfers.CurrentScoreRelPar#</div> 
 								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div>  
-									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
-										<span class="cut">CUT?</div>
+									<cfif #qATeamOfGolfers.madecut# eq 0 >
+										<div class="cut">CUT!</div>
 									<cfelse>
 										<div class="#classname#" style="color:##DDFFCC">ok!</div>
-									</cfif> --->
+									</cfif>
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar GT 0>
 							  	<div class="coreboardover" title="#strRandomMajorFactover#">+#qATeamOfGolfers.CurrentScoreRelPar#</div>
-							<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div>  
-									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
-										<div class="cut">CUT?</div>
+							  <div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div>  
+									<cfif #qATeamOfGolfers.madecut# eq 0 >
+										<div class="cut">CUT!</div>
 									<cfelse>
 										<div class="#classname#" style="color:##DDFFCC">ok!</div>
-									</cfif> --->
+									</cfif>
 							  	</cfif>
 							</td>
 						</cfloop>
@@ -384,19 +332,19 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<td height="40"  class="#classname#" align="center">--</td>
 				</cfif>
 	            
-				<!--- ** Team Gross COLUMN N (10 normally) ** --->
+				<!--- ** Team Gross COLUMN N (10 normally) ** 6 COUNT TOP 5--->
 				<td height="40" class="#classname#" align="center" nowrap="true">
   				  <cfquery datasource="#sDSN2#" name="qSumTeamScore" >
-						SELECT SUM(CurrentScoreRelPar) as TeamTotal
-						FROM tgolfer tG, tteamselected tTS
-						WHERE 
-							tTS.golferid = tG.GolferID
-							AND 
-							tTS.groupid = #pagegroupid#
-							AND
-							tTS.entrantID = #qAllTeamsinGroup.entrantID#
-							AND
-							tTS.eventid = #SESSION.eventid#
+						  SELECT SUM(g.currentscorerelpar) as TeamTotal
+							FROM tteamselected ts 
+							  left outer join tgolfer g ON g.golferid = ts.golferid
+							  left outer join tentrantgroup eg ON eg.teamselectedid = ts.teamselectedid
+							WHERE ts.entrantid = #qAllTeamsinGroup.entrantID#
+							AND ts.groupid = #pagegroupid#
+							AND ts.eventid = #SESSION.eventid# 
+							AND eg.65madecut = 1
+							ORDER BY g.currentscorerelpar asc
+							LIMIT 5
 				  </cfquery>
 					  <cfif #qSumTeamScore.TeamTotal# GT 0>
 						  <div style="font-size:14px;font-weight:300;color:gray;"><span>+ #qSumTeamScore.TeamTotal#</span></div>
@@ -411,7 +359,10 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<!--- <cfdump var="#classnamescore#"> --->
 				<!--- turn this into an array: array(i, NET, ID)? --->
 				<!--- <cfif qGroupRules.handicapsYN GT 0> --->
-				<cfif 1 eq 1> <!--- this means there are handicaps to be added --->
+				
+				<cfset nettotalscore = #Val(qAllTeamsInGroup.latest_teamnetscore)#  /> <!---  --->
+				<!---
+				<cfif 1 eq 1> 
 					<cfif qHandicapSum.totalhandicapstrokes neq "">
 						<cfif qHandicapSum.totalhandicapstrokes GTE 0 >
 							<cfset nettotalscore = #Val(qHandicapSum.totalhandicapstrokes + qSumTeamScore.TeamTotal)#  />
@@ -424,6 +375,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				<cfelse>
 					<cfset nettotalscore = #Val(qSumTeamScore.TeamTotal)#  />
 				</cfif>
+				--->
 					<cfparam name="nettotalscore" default="0">
 					<cfif nettotalscore GT 0>
 							<cfif nettotalscore GT 200>
@@ -447,27 +399,6 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 						  <cfset teamTotNETprev = #nettotalscore# />
 				</td>
 	          </tr>
-	          	<!--- <cfset countinloop = countinloop + 1> --->
-	          	<!--- <cfif countinloop gt 100>
-		          	line 332 in core: more than 100 iterations, therefore ABORT!!!!!!!!!!!!! <cfabort>
-				</cfif> --->
-				<!--- **** for debugging **** --->
-				<!--- <cfif entrantID eq 1>
-					handicapsum:<cfdump var="#qHandicapSum#">
-					<cfquery name="qHandicapInd" datasource="#sDSN2#">
-					SELECT tH.numstrokes, tTS.teamselectedid, tTS.golferid
-					FROM thandicaps tH INNER JOIN tteamselected tTS ON tH.golferid = tTS.golferid 
-					WHERE 
-						tTS.entrantID = #qAllTeamsInGroup.entrantid#
-						AND 
-						tTS.eventid = #SESSION.eventid#
-						AND
-						tH.eventid = #SESSION.eventid#
-					</cfquery>
-					handicapInd:<cfdump var="#qHandicapInd#">
-					SumTeamScore:<cfdump var="#qSumTeamScore#">
-					nettotalscore: <cfdump var="#nettotalscore#">
-				</cfif> --->
            </cfoutput>
 			  
 			  

@@ -310,8 +310,13 @@
 	<a href="javascript:setCutline()";>Set Cut Line</a> to include golfers at this score and below (E.g. 4 means all golfers at +4 or better made cut)
 	<span id="cutnumupdated" style="color:green;font-weight:bold;font-size:12px;"></span>
 </div>
+
+<div><a href="javascript:set65Cutline()";>Set 6-count-5 Cut Line</a>
+<span id="65cutnumupdated" style="color:green;font-weight:bold;font-size:12px;"></span>
+</div>
+
 <div>
-	(if you fuck up, you can reset the cutline by clicking this link <a href="javascript:resetcut();">reset cutline</a>)
+	(if you accidentally mess up, you can reset the cutline by clicking this link <a href="javascript:resetcut();">reset cutline</a>)
 	<span id="resetcutupdate" style="color:green;font-weight:bold;font-size:12px;"></span>
 	<span style="color:red;font-size:12px;font-weight:bold;">IMPORTANT: Friday night you can set cutline once all scores have been posted.  If you need to reset for some reason, you can click the reset link.  But once you start keeping score for Saturday or Sunday, DO NOT click these links.  If you do, you will have to set all scores back to Friday night's scores and then set cutline again.</span>
 </div>
@@ -376,6 +381,19 @@
 		var pars = 'FORM.cutnum=' + cutnum;
 		var resultDomElem = cutnumupdated;
 		new Ajax.Updater(resultDomElem, 'eom_caller_setcutnum.cfm', 
+		{
+		asynchronous:true,
+		parameters: pars,
+		onSuccess:function(){ }
+		}
+		);
+	}
+	
+	function set65Cutline(){
+		var cutnum = $('txtCutNumber').value;
+		var pars = 'FORM.cutnum=' + cutnum;
+		var resultDomElem = '65cutnumupdated';
+		new Ajax.Updater(resultDomElem, 'eom_caller_set65cutnum.cfm', 
 		{
 		asynchronous:true,
 		parameters: pars,

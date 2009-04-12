@@ -28,9 +28,9 @@
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>
 			
-			<!--- 
+			<!---  --->
 			<cfinclude template="group_leaderboard_core_MC2.cfm"> 
-			--->
+			
 			
     </div>
     <div id="majortop10" class="right_col">

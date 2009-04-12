@@ -19,6 +19,9 @@
     <div id="mygroupsboard" align="center" style="padding-bottom:50px;">
       <div class="section_head"><b style="color:#660000;">6 count 5 Alternate Format</b> - Group "<b><cfoutput>#qYourGroup.PoolGroupName#</cfoutput></b>"</div>
 			<cfinclude template="portlet_65group_leaderboard.cfm">
+			<hr>	
+			<cfinclude template="portlet_65group_leaderboard_MC.cfm">
+			
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>
 			<!--- 

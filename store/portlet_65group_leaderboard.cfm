@@ -79,7 +79,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.entrantid IN (#fullsquadlist#)
 		
 	ORDER BY 
-		tEG.latestteamnetscore ASC, entrantLastName ASC
+		tEG.latest65netscore ASC, entrantLastName ASC
 </cfquery>
 <cfset totalnumingroup = #qAllTeamsInGroup.RecordCount#>
 
@@ -121,6 +121,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
   
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
+    <!---
     <cfif 1 eq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
@@ -128,6 +129,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				<cfinclude template="modteam.htm">
 			</cfif>
 		</cfif>
+		--->
 		
     <div align="center" style="border:4px solid green;padding:5px;">
 		  <!--- <cfoutput>#qEventInfo.eventyear# #qEventInfo.eventname#</cfoutput> Leaderboard  --->
@@ -144,7 +146,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = -1 />
-  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Projected Cut Line :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
+  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
   <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsInGroup.recordcount#</cfoutput> make the cut</div> <br> --->
 <cfquery name="qLastUpdated" datasource="#sDSN2#">
 	SELECT DateTimeLastUpdated
@@ -190,7 +192,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		  <th class="tblehead">Golfer <cfoutput>#counter#</cfoutput></th>
 			</cfloop>
 	    <th class="tblehead">EoM Hcp</th>
-			<th class="tblehead"><div>Team</div><div style="color:red;font-weight:bold;">TOP 5/6</div><div>Gross</div></th> 
+			<th class="tblehead"><div>Team</div><div style="color:red;font-weight:bold;">TOP 6/6</div><div>Gross</div></th> 
 			<th class="tblehead">Team<div style="color:red;font-weight:bold;">TOP 5/6</div>NET</th>
     </tr>
 		
@@ -258,21 +260,19 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<cfif diffBTrsANDrequired eq 0> <!--- the correct number of golfers have been selected --->
 						<cfloop query="qATeamOfGolfers" >
 							<td height="40" align="center" class="#classname#">
-								<!--- image --->
 								<div><img src="#qATeamOfGolfers.GolferImage#.gif" /></div> 
-								<!--- lastname --->
 								<div>#qATeamOfGolfers.GolferLastName#</div>
-								<!--- scorerelpar, with formatted output (R, G, black) --->
 								<cfif qATeamOfGolfers.CurrentScoreRelPar EQ 0>
 								<div class="coreboardeven" title="#strRandomMajorFacteven#"> E </div>
-								<div>thru: #Left(thru, 3)#</div> 
+								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div> 
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
 										<div class="cut">CUT?</div>
 									<cfelse>
 										<div class="#classname#" style="color:##DDFFCC">ok!</div>
 									</cfif> --->
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar LT 0>
-								<div class="coreboardsub" title="#strRandomMajorFact#">#qATeamOfGolfers.CurrentScoreRelPar#</div> <div>thru: #Left(thru, 3)#</div>  
+								<div class="coreboardsub" title="#strRandomMajorFact#">#qATeamOfGolfers.CurrentScoreRelPar#</div> 
+								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div>  
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
 										<span class="cut">CUT?</div>
 									<cfelse>
@@ -280,7 +280,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 									</cfif> --->
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar GT 0>
 							  	<div class="coreboardover" title="#strRandomMajorFactover#">+#qATeamOfGolfers.CurrentScoreRelPar#</div>
-							<div>thru: #Left(thru, 3)#</div>  
+							  <div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div>  
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# >
 										<div class="cut">CUT?</div>
 									<cfelse>
@@ -302,14 +302,15 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 								<!--- scorerelpar, with formatted output (R, G, black) --->
 								<cfif qATeamOfGolfers.CurrentScoreRelPar EQ 0>
 								<div class="coreboardeven" title="#strRandomMajorFacteven#">E</div>
-								<div>thru: #Left(thru, 3)#</div> 
+								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div> 
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# ><div class="cut">CUT?</div></cfif> --->
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar LT 0>
-								<div class="coreboardsub" title="#strRandomMajorFact#">#qATeamOfGolfers.CurrentScoreRelPar# </div> <div>thru: #Left(thru, 3)#</div> 
+								<div class="coreboardsub" title="#strRandomMajorFact#">#qATeamOfGolfers.CurrentScoreRelPar# </div> 
+								<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div> 
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# ><div class="cut">CUT?</div></cfif> --->
 							  	<cfelseif qATeamOfGolfers.CurrentScoreRelPar GT 0>
 							  	<div class="coreboardover" title="#strRandomMajorFactover#">+#qATeamOfGolfers.CurrentScoreRelPar#</div>
-							<div>thru: #Left(thru, 3)#</div> 
+							<div>thru: <cfif find(":", thru) eq 0>#Left(thru, 3)#<cfelse>-</cfif></div> 
 									<!--- <cfif #qATeamOfGolfers.CurrentScoreRelPar# GT #numCutline10shot# ><div class="cut">CUT?</div></cfif> --->
 							  	</cfif>
 							</td>
@@ -383,7 +384,10 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 					<!--- <cfdump var="#classnamescore#"> --->
 				<!--- turn this into an array: array(i, NET, ID)? --->
 				<!--- <cfif qGroupRules.handicapsYN GT 0> --->
-				<cfif 1 eq 1> <!--- this means there are handicaps to be added --->
+				
+				<cfset nettotalscore = #Val(qAllTeamsInGroup.latest_teamnetscore)#  /> <!---  --->
+				<!---
+				<cfif 1 eq 1> 
 					<cfif qHandicapSum.totalhandicapstrokes neq "">
 						<cfif qHandicapSum.totalhandicapstrokes GTE 0 >
 							<cfset nettotalscore = #Val(qHandicapSum.totalhandicapstrokes + qSumTeamScore.TeamTotal)#  />
@@ -396,6 +400,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				<cfelse>
 					<cfset nettotalscore = #Val(qSumTeamScore.TeamTotal)#  />
 				</cfif>
+				--->
 					<cfparam name="nettotalscore" default="0">
 					<cfif nettotalscore GT 0>
 							<cfif nettotalscore GT 200>

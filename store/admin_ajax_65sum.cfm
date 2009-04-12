@@ -38,7 +38,7 @@
 		<cfquery name="qLowest5of6" datasource="#sDSN2#">
 			SELECT 
 			  tG.golferid, tG.currentScoreRelPar, tH.numstrokes,
-			  tG.eventid, (tG.currentscorerelpar + tH.numstrokes) as gNet
+			  tG.eventid, (tG.currentscorerelpar + IFNULL(tH.numstrokes, 0)) as gNet
 			FROM tgolfer tG
 			LEFT OUTER JOIN thandicaps tH ON tH.golferid = tG.golferid AND tH.eventid = tG.eventid
 			WHERE 
@@ -49,6 +49,8 @@
 				)
 			AND
 			tG.eventID = #SESSION.eventid#
+			AND
+			tG.madecut = 1
 			AND
 			tG.active = 1
 			ORDER BY gNET ASC
@@ -61,11 +63,12 @@
 		
 		<cfset nettotalscore = Val(qSumLow5.low_5_total)>
 	  
-	  <!---
+	  <!--- 
 	  <div>
 			entrantID: #qAllTeamsGlobal.entrantid#  -- NET 5 of 6 total: #nettotalscore#
 		</div>
 		--->
+		
 		
 		<cfquery name="qUpdatetEG" datasource="#sDSN2#">
 			UPDATE tentrantgroup tEG

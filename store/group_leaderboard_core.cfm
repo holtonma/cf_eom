@@ -160,7 +160,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = -1 />
-  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Projected Cut Line :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
+  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line was :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
   <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsInGroup.recordcount#</cfoutput> make the cut</div> <br> --->
 <cfquery name="qLastUpdated" datasource="#sDSN2#">
 	SELECT DateTimeLastUpdated
