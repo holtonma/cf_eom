@@ -28,8 +28,7 @@
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>
 			
-			<!---  --->
-			<cfinclude template="group_leaderboard_core_MC2.cfm"> 
+			<!--- <cfinclude template="group_leaderboard_core_MC2.cfm"> --->
 			
 			
     </div>
@@ -42,8 +41,8 @@
       <p>
 	      <cfif SESSION.patrongroupid eq 1>
 		       Group 'Magical' send $10 Masters entry fee to: 
-		       <div style="font-weight:bold;font-size: 14px;">Mr. Eye | P.O. Box 2398 | Glenview, IL 60025</div>
-					 <div align="center" style="font-weight:normal;font-size:11px;">(as always, in lieu of snail-mail you can PayPal $10 to: holtonma@gmail.com)</div>
+		       <div style="font-weight:bold;font-size: 14px;">Wally Holton | 335 Nora Ave | Glenview, IL 60025</div>
+					 <div align="center" style="font-weight:normal;font-size:11px;">( in lieu of snail-mail you can PayPal $11 to: holtonma@gmail.com.  I pass the PayPal fee on to you)</div>
 		    <cfelse>
 			     Caveat Emptor and Enjoy
 		    </cfif>

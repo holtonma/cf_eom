@@ -2,7 +2,7 @@
 <cfquery datasource="#sDSN#" name="qAllGolfers">
 SELECT *
 FROM golfer
-WHERE active = 1
+WHERE active IN(0,1)
 ORDER BY GolferLastName ASC
 </cfquery>
 <link rel="STYLESHEET" type="text/css" href="../styles.css">

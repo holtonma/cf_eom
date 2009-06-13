@@ -6,7 +6,7 @@ ORDER BY tG.CurrentScoreRelPar ASC, tG.thru DESC, tG.GolferLastName ASC
 LIMIT 10
 </cfquery>
 
-<div class="section_head" align="center">2009 Masters</div>
+<div class="section_head" align="center">2009 US Open</div>
 <table class="sidebarlb">
 	<tbody>
 		<tr>

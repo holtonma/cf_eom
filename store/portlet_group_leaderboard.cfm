@@ -94,9 +94,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		AND
 		tEG.madecut = 1
 		
-	  AND
-		tEG.entrantid IN (#fullsquadlist#)
 		
+	  
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 </cfquery>
@@ -141,7 +140,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
   
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
-    <!--- 
+    <!--- --->
     <cfif 1 eq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
@@ -149,7 +148,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				<cfinclude template="modteam.htm">
 			</cfif>
 		</cfif>
-		--->
+		
 		
     <div align="center" style="border:4px solid green;padding:5px;">
 		  <!--- <cfoutput>#qEventInfo.eventyear# #qEventInfo.eventname#</cfoutput> Leaderboard  --->

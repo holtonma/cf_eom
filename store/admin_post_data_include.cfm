@@ -127,7 +127,7 @@
 	SELECT GolferID, golferfirstname, golferlastname, currentscorerelpar, golferimage, active
 	FROM tgolfer
 	WHERE 1 = 1	
-	  AND active = 1
+	  AND active IN (0,1)
 	ORDER BY golferlastname asc
 </cfquery>
 <!--- #activestring#  #orderbystring#--->

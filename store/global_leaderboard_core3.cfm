@@ -68,7 +68,7 @@ LIMIT 100
 	AND
 	tEG.entrantid IN (#fullsquadlist#)  
 	AND
-		tEG.madecut = 1 --->
+	tEG.madecut = 1 --->
 <cfquery datasource="#sDSN2#" name="qAllTeamsGlobal" >
 	SELECT 
 		tE.entrantid, tE.lname as entrantLastName, tE.fname as entrantFirstName,
@@ -82,8 +82,8 @@ LIMIT 100
 		tEG.teamselectedid > 0
 		AND
 		tEG.madecut = 1
-		AND
-		tEG.entrantid IN (#fullsquadlist#)
+		
+		
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 	LIMIT 100
@@ -101,8 +101,8 @@ tEG.entrantid IN (#fullsquadlist#)--->
 		tEG.eventid = #SESSION.currenteventid#
 		AND
 		tEG.teamselectedid > 0
-		AND
-		tEG.entrantid IN (#fullsquadlist#)
+		
+		
 </cfquery>
 
 <!--- version 1 --->

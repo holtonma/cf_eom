@@ -54,10 +54,11 @@
 	    <td colspan="2">
 		  <!--- Link to password retrieval --->
 		  Not already signed up with Eye on Majors? 
-		  <!--- --->
-			Registration for the 2009 US Open will be open after the Masters has concluded!  
+		  <!--- 
+			Registration for the 2009 British Open Championship will be open after the Masters has concluded!  
+			--->
 			<!---Sign Up Here! --->
-		  <!--- <div><a href='register/user_registration.cfm'>Register HERE</a></div> --->
+		  <div><a href='register/user_registration.cfm'>Register HERE</a></div> 
 		  <br /><!--- Coming Soon : Password Retrieval Feature --->
 		</td>
 	  </tr>
