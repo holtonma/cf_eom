@@ -2,24 +2,11 @@
 <cfset currentplace = 0 />
 <cfset outputplace = 0 />
 <cfset teamTotNETprev = -1234 />
-<!-- tiedPLbool: 0 = not tied; 1 = tied -->
+<!--- tiedPLbool: 0 = not tied; 1 = tied --->
 <cfset tieldPLbool = 0 />
 
 <cfparam name="pagegroupid" default="#SESSION.patrongroupid#">  <!--- defaults to last groupid  --->
-<!--- this query will return the single record (groupID) related to the authorized user   #sDSN#---><!--- 
-this is no longer needed because of SESSION.patrongroupid, and pagegroupid set the page to the current groupid that the patron wants to see (if patron has more than 1 group )--->
-<!--- <cfquery datasource="#sDSN2#" name="qSpecificGroupID" >
-	SELECT 
-		poolperson.EntrantID, poolperson.GroupID, poolgroup.PoolgroupID
-	FROM 
-		poolperson, poolgroup
-	WHERE 
-		poolperson.EntrantID = #GetAuthUser()#
-		AND 
-		poolgroup.PoolgroupID = #SESSION.patrongroupid#
-</cfquery> --->
 
-<!--- version 1 --->
 <!--- after cut :: 
 AND selectedteams.fullsquad = 1 AND selectedteams.madecut = 1
 --->

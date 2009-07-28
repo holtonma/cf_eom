@@ -1,13 +1,13 @@
-<!-- loads prior to every .cfm page on site -->
-<!-- 8 hour sessions -->
-<cfapplication sessionmanagement="yes" sessiontimeout="#CreateTimeSpan(0, 8, 0, 0)#" />
+<!--- loads prior to every .cfm page on site --->
+<!--- 8 hour sessions --->
+<cfapplication sessionmanagement="yes" sessiontimeout="#CreateTimeSpan(0, 16, 0, 0)#" />
 <cfset sTitle = "Eye on Majors :: Fun and Free web-based golf pool for you,  your office, friends and fellow golf fans!" />
-<!-- sets database name to 'eyeonmajors' -->
+<!--- sets database name to 'eyeonmajors' --->
 <cfset sDSN = "eyeonmajors" />
 <cfset sDSN2 = "eyeon2" />
 <cfset sHeaderMessage = "" />
 <cfset sPersonPageMessage = "Do you wish to join another group?" />
-<cfset eventID = 20> <!--- 20 =  US Open 2009 --->
+<cfset eventID = 22> <!--- 22 =  PGA Championship 2009 --->
 
 <cfparam name="SESSION.currenteventid" default="#eventID#">
 <cfparam name="SESSION.eventid" default="#eventID#">

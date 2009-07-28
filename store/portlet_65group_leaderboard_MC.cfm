@@ -75,8 +75,6 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.eventid = #SESSION.eventid#
 		AND
 		tEG.65madecut = 0
-		AND
-		tEG.entrantid IN (#fullsquadlist#)
 		
 	ORDER BY 
 		tEG.latest65netscore ASC, entrantLastName ASC

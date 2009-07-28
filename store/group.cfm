@@ -28,7 +28,8 @@
 			<div style="padding:15px;"><cfinclude template="music_on_off.cfm"></div>
 			<hr>
 			
-			<!--- <cfinclude template="group_leaderboard_core_MC2.cfm"> --->
+			<!--- --->
+			<cfinclude template="group_leaderboard_core_MC2.cfm"> 
 			
 			
     </div>
@@ -40,7 +41,7 @@
 	    <div class="section_head">From 'The Committee':</div>
       <p>
 	      <cfif SESSION.patrongroupid eq 1>
-		       Group 'Magical' send $10 Masters entry fee to: 
+		       Group 'Magical' send $10 entry fee to: 
 		       <div style="font-weight:bold;font-size: 14px;">Wally Holton | 335 Nora Ave | Glenview, IL 60025</div>
 					 <div align="center" style="font-weight:normal;font-size:11px;">( in lieu of snail-mail you can PayPal $11 to: holtonma@gmail.com.  I pass the PayPal fee on to you)</div>
 		    <cfelse>
@@ -66,17 +67,7 @@
   </div>
   
   <div id="bottom_section">
-    <script type="text/javascript"><!--
-		google_ad_client = "pub-3488777663690401";
-		/* 728x90, created 3/15/08, group leaderboard bottom */
-		google_ad_slot = "0561673053";
-		google_ad_width = 728;
-		google_ad_height = 90;
-		//-->
-		</script>
-		<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
+
   </div>
   
   <div class="subtle">

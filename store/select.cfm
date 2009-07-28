@@ -17,7 +17,7 @@
     <div class="section_head">Select Your Squad for this Major:</div>
 	  <cfinclude template="select_team.cfm">
 	<cfelse>
-		<div style="padding:15px;" align="center">The tournament is underway.  See you back for the 2009 US Open!</div>
+		<div style="padding:15px;" align="center">The tournament is underway.  See you back for the 2009 British Open!</div>
 	</cfif>
 </body>
 </html>

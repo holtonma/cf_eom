@@ -33,7 +33,7 @@
 		    <img src="../images/spacer.gif" width="25" height="5" alt="" border="0">
 		  </td>
           <td>
-		    <!-- <a href="../poolpersonpage.cfm"><b class="header">mEYE Team</b></a>  -->
+		    <!--- <a href="../poolpersonpage.cfm"><b class="header">mEYE Team</b></a>  --->
           </td>
           <td class="white">
 		    <img src="../images/spacer.gif" width="10" height="5" alt="" border="0">
@@ -45,13 +45,13 @@
 		    <img src="../images/spacer.gif" width="20" height="5" alt="" border="0">
 		  </td>
           <td>
-		    <!-- <a href="../store/groupleaderboard_present.cfm"><b class="header">Leaderboard</b></a>  -->
+		    <!--- <a href="../store/groupleaderboard_present.cfm"><b class="header">Leaderboard</b></a>  --->
           </td>
 	      <td class="white">
 		    <img src="../images/spacer.gif" width="20" height="5" alt="" border="0">
 		  </td>
           <td> 
-		    <!-- <a href="../logout.cfm"><b class="header">Logout</b></a> -->
+		    <!--- <a href="../logout.cfm"><b class="header">Logout</b></a> --->
           </td>
 		  <td class="white"><img src="../images/spacer.gif" width="20" height="5" alt="" border="0"></td>
           <td>

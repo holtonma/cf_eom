@@ -6,56 +6,8 @@
 <cfset tieldPLbool = 0 />
 
 <cfparam name="pagegroupid" default="#SESSION.patrongroupid#">  <!--- defaults to last groupid  --->
-<!--- this query will return the single record (groupID) related to the authorized user   #sDSN#---><!--- 
-this is no longer needed because of SESSION.patrongroupid, and pagegroupid set the page to the current groupid that the patron wants to see (if patron has more than 1 group )--->
-<!--- <cfquery datasource="#sDSN2#" name="qSpecificGroupID" >
-	SELECT 
-		poolperson.EntrantID, poolperson.GroupID, poolgroup.PoolgroupID
-	FROM 
-		poolperson, poolgroup
-	WHERE 
-		poolperson.EntrantID = #GetAuthUser()#
-		AND 
-		poolgroup.PoolgroupID = #SESSION.patrongroupid#
-</cfquery> --->
 
-<!--- version 1 --->
-<!--- after cut :: 
-AND selectedteams.fullsquad = 1 AND selectedteams.madecut = 1
---->
-<!--- <cfquery datasource="#sDSN2#" name="qAllTeamsGlobal" >
-SELECT 
-	poolperson.entrantID, poolperson.entrantLastName, poolperson.entrantFirstName, poolperson.selectedteam1id as SelectedTeam,
-	poolperson.groupid, selectedteams.golfer1ID, selectedteams.golfer2ID, selectedteams.golfer3ID, selectedteams.golfer4ID, selectedteams.golfer5ID, selectedteams.golfer6ID,
-	selectedteams.latest_teamnetscore
-FROM 
-	poolperson, selectedteams
-WHERE 
-	poolperson.EntrantID = selectedteams.poolpersonID AND poolperson.groupid = selectedteams.PoolGroupID
-ORDER BY selectedteams.latest_teamnetscore ASC
-LIMIT 100
-</cfquery> --->
-<!--- join tentrant, tentrantgroup, tteamselected and limit based upon entrantid, groupid, eventid --->
-<!--- <cfquery datasource="#sDSN2#" name="qAllTeamsGlobal" >
-	SELECT 
-		tE.entrantID, tE.lname as entrantLastName, te.fname as entrantFirstName, 
-		tTS.teamselectedid as SelectedTeam, tTS.golferid,
-		tEG.groupid, selectedteams.golfer1ID, selectedteams.golfer2ID, 
-		selectedteams.golfer3ID, selectedteams.golfer4ID, selectedteams.golfer5ID, selectedteams.golfer6ID,
-		selectedteams.latest_teamnetscore
-	FROM 
-		tentrant tE
-			LEFT OUTER JOIN tentrantgroup tEG ON tE.entrantid = tEG.entrantid
-			LEFT OUTER JOIN tteamselected tTS ON tE.entrantid = tTS.entrantid
-	WHERE 
-		tEG.entrantid = #SESSION.entrantid# 
-		AND 
-		tEG.groupid = #pagegroupid#
-		AND
-		tEG.eventid = #SESSION.eventid#
-	ORDER BY selectedteams.latest_teamnetscore ASC
-	LIMIT 100
-</cfquery> --->
+
 <cfset fullsquadlist = "">
 <cfquery datasource="#sDSN2#" name="qAllFullSquadEntrantIDs">
 	SELECT DISTINCT tTS.entrantid FROM tteamselected tTS WHERE tTS.golferid > 0 AND tTS.eventid = #SESSION.eventid#
@@ -82,7 +34,9 @@ LIMIT 100
 		tEG.teamselectedid > 0
 		AND
 		tEG.madecut = 1
-		
+		AND
+  	tEG.entrantid IN (#fullsquadlist#)  
+  	
 		
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
@@ -130,11 +84,11 @@ tEG.entrantid IN (#fullsquadlist#)--->
 </cfquery>
 
 <cfset tourneyname = #qEventInfo.eventname#>
-<!-- this will be set by a random query to the database-->
+<!--- this will be set by a random query to the database --->
 <cfset strRandomMajorFact = "Major fact: the first ALBATROSS at The Masters was in 1935 by Gene Sarazen at the 15th hole.  There have been two in the tournament's history since then." />
 <cfset strRandomMajorFactover = "Major fact: In 1956, Jack Burke, Jr. won The Masters by one-stroke over Ken Venturi with a total of +1, 289 strokes." />
 <cfset strRandomMajorFacteven = "Major fact: In 1966, Jack Nicklaus finished with an EVEN par 288 total, and won his 2nd consecutive Masters, and his 3rd Green Jacket overall." />
-<!-- -->
+
 				
 				
 				
@@ -152,7 +106,7 @@ tEG.entrantid IN (#fullsquadlist#)--->
   </div> 
   <div align="center"><br>
   </div>
-  <cfset ccutline = 100/>  <!-- set to 1000 b/c it's after the cut has been made, therefore don't want to indicate players are approaching cut, etc-->
+  <cfset ccutline = 100/>  <!--- set to 1000 b/c it's after the cut has been made, therefore don't want to indicate players are approaching cut, etc --->
   <cfif #ccutline# EQ 0>
 	 <cfset strCutline = "E" />
   <cfelseif #ccutline# LT 0>
@@ -161,8 +115,8 @@ tEG.entrantid IN (#fullsquadlist#)--->
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = 4 />
-  <div class="headerTeam"></div> <!-- <cfoutput>#finalcutline#</cfoutput> or better<br> -->
-  <!-- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsGlobal.recordcount#</cfoutput> make the cut</div> <br> -->
+  <div class="headerTeam"></div> <!--- <cfoutput>#finalcutline#</cfoutput> or better<br> --->
+  <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsGlobal.recordcount#</cfoutput> make the cut</div> <br> --->
   <cfoutput>Leaderboard last updated : #qEventInfo.DateTimeLastUpdated#</cfoutput> PST
   
   <table width="100%">
@@ -200,12 +154,12 @@ tEG.entrantid IN (#fullsquadlist#)--->
 					<cfset currentplace = currentplace + 1 />
 					<cfif currentplace eq 1 >
 						<cfif tieldPLbool EQ 0>
-							  <!-- not a tie, use next place -->
+							  <!--- not a tie, use next place --->
 							  <cfset outputplace = currentplace/>
 							  Eyeing the<br>EyeOnMajors.com <br>
 							  <div class="evenpartextongreenlarge">World<br>Championship</div>
 						<cfelse>
-							  <!-- tie, use first tied place -->
+							  <!--- tie, use first tied place --->
 							  <cfset outputplace = outputplace/>
 							  ...eyeing <br>
 							  the <br>
@@ -325,12 +279,12 @@ tEG.entrantid IN (#fullsquadlist#)--->
 					<cfelse>
 						<div class="subpartextongreenlarge">#nettotalscore#</div>
 					</cfif>
-						<!-- this block is for the next iteration determining if the PLACE is a tie-->
+						<!--- this block is for the next iteration determining if the PLACE is a tie --->
 						  <cfif teamTotNETprev EQ #nettotalscore#>
-						  		<!-- tied last pool entrant -->
+						  		<!--- tied last pool entrant --->
 								<cfset tieldPLbool = 1 />
 						  <cfelse>
-						  		<!-- not tied last pool entrant -->
+						  		<!--- not tied last pool entrant --->
 						  		<cfset tieldPLbool = 0 />
 						  </cfif>
 						  <cfset teamTotNETprev = #nettotalscore# />
@@ -354,7 +308,7 @@ tEG.entrantid IN (#fullsquadlist#)--->
 							<cfset prizeeligible = 0>
 						</cfif>
 					</cfloop>
-					<!-- this is where the prize eligible goes... if groupID > 10-->
+					<!--- this is where the prize eligible goes... if groupID > 10 --->
 					<cfif #prizeeligible# eq 1>
 						<div class="coreboardeven" title="eligibility requires 5 full teams in group">YES!</div>
 					<cfelse>

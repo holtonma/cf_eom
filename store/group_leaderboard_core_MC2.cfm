@@ -106,13 +106,15 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.eventid = #SESSION.eventid#
 		AND
 		tEG.latestteamnetscore IS NOT NULL
-		AND
-		tEG.entrantid IN (#fullsquadlist#)
+		
+		
 		AND
 		tEG.madecut = 0
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
 </cfquery>
+<!--- AND
+tEG.entrantid IN (#fullsquadlist#) --->
 
 <!--- obtain the cutline and last time the cutline was updated --->
 <!--- <cfquery datasource="#sDSN2#" name="qCutline">
@@ -166,7 +168,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = -1 />
-  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line was :: <span class="worldrankingblack">+ 1</span> </div> 
+  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line was :: <span class="worldrankingblack">+ 4</span> </div> 
   <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsInGroup.recordcount#</cfoutput> make the cut</div> <br> --->
 <cfquery name="qLastUpdated" datasource="#sDSN2#">
 	SELECT DateTimeLastUpdated

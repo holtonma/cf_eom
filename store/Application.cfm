@@ -1,6 +1,6 @@
 <!--- loads prior to every .cfm page on site --->
 <!--- 8 hour sessions --->
-<cfapplication sessionmanagement="yes" sessiontimeout="#CreateTimeSpan(0, 8, 0, 0)#" />
+<cfapplication sessionmanagement="yes" sessiontimeout="#CreateTimeSpan(0, 16, 0, 0)#" />
 <cfset sTitle = "Eye on Majors :: Fun and Free web-based golf pool for you,  your office, friends and fellow golf fans!" />
 <!--- sets database name to 'eyeonmajors' --->
 <cfset sDSN = "eyeonmajors" />

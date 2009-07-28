@@ -98,6 +98,7 @@
 </table>
 
 <cfelse>
+	<cfinclude template="eom_tabs.cfm">      
 	<table><tr><td>The tourney has begun!  Team selection period is over!  Enjoy the week!</td></tr></table>
 </cfif>
 

@@ -16,7 +16,7 @@
 	AND tE.emailaddy NOT LIKE '% %'
 	AND tEG.groupid = 1
 	
-	AND tE.entrantid = 1
+	and tE.entrantid = 1
 	
 	ORDER BY tE.entrantid ASC
 </cfquery>
@@ -47,13 +47,13 @@
 		WHERE
 			tEG.entrantid = #qEmails.entrantid#
 			AND
-			tEG.eventid IN (7, 8, 9,10,11, 12, 13, 14, 15, 16, 17, 18, 19)
+			tEG.eventid IN (7, 8, 9,10,11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21)
 	</cfquery>
 	
 <cfif qGetGroup.RecordCount gt 0>
 	
 	<cfmail from="EyeOnMajors@gmail.com" to="#qEmails.emailaddy#" bcc="eyeonmajors@gmail.com"
-			replyto="EyeOnMajors@gmail.com" subject="Group 'Magical' - Masters #Year(Now())#" type="HTML">
+			replyto="EyeOnMajors@gmail.com" subject="Group 'Magical' - British #Year(Now())#" type="HTML">
 		
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -72,21 +72,21 @@
 <body>
 <div style="padding:10px;">Dear #qEmails.fname# #qEmails.lname#,</div>
 <div style="padding:10px;"> 
-Friends, we are back again, providing Masters entertainment for your enjoyment. If you are game, get your picks in by Wednesday night at 12 a.m. PST!  
+Friends, we are back again, providing Major entertainment for your enjoyment. Join in our fun and get your picks in by Wednesday 10 p.m. PST.
 </div>
 
 <div style="padding:10px;">
-Congrats to our big winners from last year -- there were some nice cash prizes, and great fun was had.  Looking forward to more good times with you this year.
+Congrats to Dawn Jarosz for her winner-take-all Masters victory!  Looking forward to more good times the last 3 majors.
 </div>
 
 <div style="font-size:18px;font-weight:bold;padding:20px;" align="center">
-Our commissioner for this major is Mr. Eye. 
+Our commissioner for this major is Wally Holton. 
 <span>Therefore, please send your entry fee of $10 to: 
 	<div style="color:black;text-decoration:underline;">
-	Mr. Eye | P.O. Box 2398 | Glenview, IL 60025
+	Wally Holton | 335 Nora Ave | Glenview, IL 60025
 	</div>
-	<div>( as always, you can always PayPal your $10 entry fee to: holtonma@gmail.com )</div>
-	<div>Thanks, Mr. Eye, and to all - enjoy the week and good luck!</div>
+	<div>( you can also PayPal your $11 entry fee to: holtonma@gmail.com.  The extra $1 is to cover the vig from PayPal )</div>
+	<div>Thanks, and to all - enjoy the week and good luck!</div>
 </span>
 </div>
 
@@ -94,14 +94,14 @@ Our commissioner for this major is Mr. Eye.
 	<ul>As a refresher, here are our simple rules:
 		<li>select 6 players. they are your team.</li>
 		<li>all players are created equal except:
-		Tiger Woods. -- is giving 12 shots to every player in the field in our game.  Otherwise, it's too easy.</li>
+		Tiger Woods. -- is giving 10 shots to every player in the field in our game.  Otherwise, it's too easy.</li>
 		<li>all of your players must make the cut. </li>
 		<li>our winner will be the 6 selected players ( the team )  with the lowest total score for 72 holes.we only have a 1st prize. winner takes all.</li>
 		<li>tiebreaker. predict the winning individual score for the tournament. </li>
-		<li>all entries must be posted to the web page at www.eyeonmajors.com before 11:59 p.m. pst Wednesday before the tournament.  (When the clock strikes 11:59 p.m. PST, the website automatically refuses to accept entries, so get your picks in early!).  Entries are posted by simply logging in, and clicking on the red text next to your name that says "team not complete".  This will take you to a page where you simply click the players' faces that you want on your squad and checkout.   Tell as many friends as you like to join our group, or create a unique group. </li>
+		<li>all entries must be posted to the web page at www.eyeonmajors.com before 12:59 a.m. PST Thursday before the tournament.  (When the clock strikes the deadline time listed above, the website automatically refuses to accept entries, so get your picks in early!).  Entries are posted by simply logging in, and clicking on the red text next to your name that says "team not complete".  This will take you to a page where you simply click the players' faces that you want on your squad and checkout.   Tell as many friends as you like to join our group, or create a unique group. </li>
 		<li>100% of all entry fees will be paid to the lone winner!  Invite your friends to join our group's pool -- the more the merrier. </li>
 		<li>the decision of the committee shall be final on all matters. the committee is Mr Eye and Mr Mark Holton. 
-		Technical questions about the website can be sent to: holtonma@gmail.com</li>
+		Technical questions about the website can be sent to: holtonma@gmail.com (note: I will be out of town until Wed)</li>
 		<li>Good luck and please keep those checks rolling in....... remember our motto: <i>fast pay makes fast friends</i></li>
 	</ul>
 </div>
