@@ -16,7 +16,6 @@
 	AND tE.emailaddy NOT LIKE '% %'
 	AND tEG.groupid = 1
 	
-	AND tE.entrantid = 1
 	
 	ORDER BY tE.entrantid ASC
 </cfquery>
@@ -53,7 +52,7 @@
 <cfif qGetGroup.RecordCount gt 0>
 	
 	<cfmail from="EyeOnMajors@gmail.com" to="#qEmails.emailaddy#" bcc="eyeonmajors@gmail.com"
-			replyto="EyeOnMajors@gmail.com" subject="Group 'Magical' - Masters #Year(Now())#" type="HTML">
+			replyto="EyeOnMajors@gmail.com" subject="Group 'Magical' - Masters #Year(Now())# (PO Box change)" type="HTML">
 		
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -83,7 +82,7 @@ Congrats to our big winners from last year -- there were some nice cash prizes, 
 Our commissioner for this major is Mr. Eye. 
 <span>Therefore, please send your entry fee of $10 to: 
 	<div style="color:black;text-decoration:underline;">
-	Mr. Eye | P.O. Box 2398 | Glenview, IL 60025
+	Mr. Eye | <b>P.O. Box 901</b> | Glenview, IL 60025
 	</div>
 	<div>( as always, you can PayPal your $11 entry fee to: holtonma@gmail.com )</div>
 	<div>Thanks, Mr. Eye, and to all - enjoy the week and good luck!</div>
@@ -94,7 +93,7 @@ Our commissioner for this major is Mr. Eye.
 	<ul>As a refresher, here are our simple rules:
 		<li>select 6 players. they are your team.</li>
 		<li>all players are created equal except:
-		Tiger Woods. -- is giving 10 shots to every player in the field in our game.  Otherwise, it's too easy.</li>
+		Tiger Woods. -- is giving 10 shots to every player in the field in our game.  (subject to change)</li>
 		<li>all of your players must make the cut. </li>
 		<li>our winner will be the 6 selected players ( the team )  with the lowest total score for 72 holes.we only have a 1st prize. winner takes all.</li>
 		<li>tiebreaker. predict the winning individual score for the tournament. </li>

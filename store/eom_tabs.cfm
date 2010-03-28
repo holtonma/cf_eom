@@ -15,7 +15,7 @@
   <li id="t-global"><a href="global.cfm"><div>Global</div><div>Leaderboard</div></a></li> 
   <li id="t-group"><a href="group.cfm"><div>My Group's</div><div>Leaderboard</div></a></li>
   <li id="t-65group"><a href="65group.cfm"><div>Alternate</div><div>Group Format</div></a></li>
-	<li id="t-major"><a href="major.cfm"><div>PGA</div><div>Leaderboard</div></a></li>
+	<li id="t-major"><a href="major.cfm"><div>Masters</div><div>Leaderboard</div></a></li>
   <li id="t-message"><a href="message.cfm"><div>Message</div><div>Board</div></a></li> 
   <!--- <li id="t-photos"><a href="photos.cfm"><div>Sandbagger</div><div>Photos</div></a></li> --->
   <!--- <li id="t-mynews"><a href="mynews.cfm"><div>My</div><div>News</div></a></li>  --->

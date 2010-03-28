@@ -114,14 +114,14 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 
 <cfset winnershare = #qAllTeamsInGroup.recordcount# * 10 />
 <cfset numCutline10shot = #qTenShotCutline.CutLessTen# + 10/>
-<cfset numCutline10shot = 1>
+<cfset numCutline10shot = 4>
 <cfset strCutline = "#numCutline10shot#" />
 <form action="groupleaderboard_manage.cfm" method="post">
   
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
     <!--- --->
-    <cfif 1 eq 1>
+    <cfif 1 neq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
 			<cfelse>
