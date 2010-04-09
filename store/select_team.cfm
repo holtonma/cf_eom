@@ -58,7 +58,7 @@
 							</cfoutput>
 						
 
-<cfif 1 eq 1> <!--- modify this to neq when tourney begins! --->
+<cfif 1 neq 1> <!--- modify this to neq when tourney begins! --->
 <table width="100%">
   <tr>
     <td><img src="../images/spacer.gif" width="25" /></td>

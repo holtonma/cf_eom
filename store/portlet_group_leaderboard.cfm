@@ -44,7 +44,7 @@ AND selectedteams.madecut = 1--->
 <!--- the following query selects all contestants in this group: 
 LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score 
 (another query that follows will use teamselectedID to obtain the recordset of all teams in the group )--->
-<cfset fullsquadlist = "">
+<cfset fullsquadlist = "-1">
 <cfquery datasource="#sDSN2#" name="qAllFullSquadEntrantIDs">
 	SELECT DISTINCT tTS.entrantid 
 	FROM tteamselected tTS 
@@ -94,7 +94,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		AND
 		tEG.madecut = 1
 		
-		
+		AND
+  	tEG.entrantid IN (#fullsquadlist#)
 	  
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
@@ -140,8 +141,8 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
   
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
-    <!--- --->
-    <cfif 1 eq 1>
+    <!--- neq during tourney --->
+    <cfif 1 neq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
 			<cfelse>

@@ -53,13 +53,14 @@
 	  <tr>
 	    <td colspan="2">
 		  Not already signed up with Eye on Majors? 
-		  <!--- 
-		  Registration for the 2010 Masters will be open 
-		    after the PGA Championship has concluded! <!---  --->
-			--->
+		  
+		  Registration for the 2010 US Open will be open 
+		    after the Masters has concluded! 
+			<!---  --->
+			<!---  
 			Sign Up Here! 
 		  <div><a href='register/user_registration.cfm'>Register HERE</a></div> 
-		 
+		  --->
 		  <!---   --->
 		  <br /><!--- Coming Soon : Password Retrieval Feature --->
 		</td>
