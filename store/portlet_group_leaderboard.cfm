@@ -94,8 +94,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		AND
 		tEG.madecut = 1
 		
-		AND
-  	tEG.entrantid IN (#fullsquadlist#)
+		
 	  
 	ORDER BY 
 		tEG.latestteamnetscore ASC, entrantLastName ASC
@@ -134,7 +133,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				
 <cfset winnershare = #qAllTeamsInGroup.recordcount# * 10 />
 <cfset numCutline10shot = #qTenShotCutline.CutLessTen# + 10/>
-<cfset numCutline10shot = 4>
+<cfset numCutline10shot = 6>
 <cfset strCutline = "#numCutline10shot#" />
 <form action="groupleaderboard_manage.cfm" method="post">
   
@@ -142,7 +141,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
   <div class="leaderboardheader" style="padding:15px;">
     <!--- ********** team fully selected?? ******** --->
     <!--- neq during tourney --->
-    <cfif 1 neq 1>
+    <cfif 1 eq 1>
     	<cfif qChosenTeam.RecordCount LT 6>
 				<cfinclude template="noteam.htm">
 			<cfelse>
@@ -168,7 +167,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 	  <cfset strCutline = #ccutline# />
   </cfif>
   <cfset finalcutline = -1 />
-  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Cut Line :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
+  <div class="headerTeam"><cfoutput>#tourneyname#</cfoutput> Projected Cut Line :: <span class="worldrankingblack">+ <cfoutput>#numCutline10shot#</cfoutput></span> </div> 
   <!--- Eye on Majors Cut Line : only 3 of <cfoutput>#qAllTeamsInGroup.recordcount#</cfoutput> make the cut</div> <br> --->
 <cfquery name="qLastUpdated" datasource="#sDSN2#">
 	SELECT DateTimeLastUpdated
@@ -254,7 +253,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 				</td>
 				<!--- ** COLUMN 2 ** --->
 				<td height="40" class="#classname#">
-				  <div style="font-weight:bold;color:black;text-transform: capitalize;">#qAllTeamsInGroup.entrantLastName#, #qAllTeamsInGroup.entrantFirstName#</div>
+				  <div class="patronname" style="font-weight:bold;color:black;text-transform: capitalize;">#qAllTeamsInGroup.entrantLastName#, #qAllTeamsInGroup.entrantFirstName#</div>
 				  <div>
 				  <cfif (#qAllTeamsInGroup.tiebreaker#) EQ 0>
 					 (E)

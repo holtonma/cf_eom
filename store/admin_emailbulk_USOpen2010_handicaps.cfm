@@ -11,7 +11,6 @@
 	INNER JOIN tentrant tE  ON tTS.entrantid = tE.entrantid
 	WHERE 1 = 1
 	
-	AND tTS.entrantid = 1
 	
 	ORDER BY tE.entrantid ASC
 </cfquery>

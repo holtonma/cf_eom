@@ -34,8 +34,7 @@
 		tEG.teamselectedid > 0
 		AND
 		tEG.madecut = 1
-		AND
-  	tEG.entrantid IN (#fullsquadlist#)  
+		
   	
 		
 	ORDER BY 
@@ -175,6 +174,15 @@ tEG.entrantid IN (#fullsquadlist#)--->
 				<td height="40" class="ltturq" style="text-transform: capitalize;">
 				  <div>#qAllTeamsGlobal.entrantLastName#,<!--- #qAllTeamsGlobal.entrantid#, #qAllTeamsGlobal.teamselectedid# ---></div>
 				  <div>#qAllTeamsGlobal.entrantFirstName#</div>
+				  <div>
+				  <cfif (#qAllTeamsGlobal.tiebreaker#) EQ 0>
+					 (E)
+				  <cfelseif (#qAllTeamsGlobal.tiebreaker#) LT 0>
+					 (#qAllTeamsGlobal.tiebreaker#)
+				  <cfelseif (#qAllTeamsGlobal.tiebreaker#) GT 0>
+					 (#qAllTeamsGlobal.tiebreaker#)
+				  </cfif>
+				  </div>
 				</td>
 				<!--- loop through team selected and output td's --->
 				<!--- ** COLUMN 3 thru 9 [3 + Num players in group] ** --->

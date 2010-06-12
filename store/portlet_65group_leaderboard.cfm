@@ -75,8 +75,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 		tEG.eventid = #SESSION.eventid#
 		AND
 		tEG.65madecut = 1
-		AND
-  	tEG.entrantid IN (#fullsquadlist#)
+		
 		
 	ORDER BY 
 		tEG.latest65netscore ASC, entrantLastName ASC
@@ -115,7 +114,7 @@ LastName, FirstName, TeamSelected, GroupID, tiebreaker, latest team net score
 
 <cfset winnershare = #qAllTeamsInGroup.recordcount# * 10 />
 <cfset numCutline10shot = #qTenShotCutline.CutLessTen# + 10/>
-<cfset numCutline10shot = 4>
+<cfset numCutline10shot = 3>
 <cfset strCutline = "#numCutline10shot#" />
 <form action="groupleaderboard_manage.cfm" method="post">
   

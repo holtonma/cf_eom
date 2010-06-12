@@ -7,7 +7,7 @@
 <cfset sDSN2 = "eyeon2" />
 <cfset sHeaderMessage = "" />
 <cfset sPersonPageMessage = "Do you wish to join another group?" />
-<cfset eventID = 23> <!--- 23 =  Masters 2010 --->
+<cfset eventID = 24> <!--- 24 =  US Open  2010 --->
 
 <cfparam name="SESSION.currenteventid" default="#eventID#">
 <cfparam name="SESSION.eventid" default="#eventID#">

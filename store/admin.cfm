@@ -25,7 +25,8 @@
 		<div>Every 90 seconds, the 6-count-5 will updated:</div>    
 		<div id="auto_add2"><cfoutput>Last updated 6-count-5 Nets: #DateFormat(Now(), "mm/dd/yyyy")#</cfoutput></div>    
 		
-		<!--- <div><a href="admin_nexttourney.cfm">Update For Next Tourney (US Open 2008)</a></div> --->
+		<!--- --->
+		<div><a href="admin_nexttourney.cfm">Update For Next Tourney (US Open 2010)</a></div> 
     <div>
 	    <cfinclude template="admin_post_data_include.cfm">
 	  </div>

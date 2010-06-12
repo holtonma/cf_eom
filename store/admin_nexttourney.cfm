@@ -21,11 +21,11 @@
 		FROM tentrantgroup
 		WHERE entrantid = #qAllTeamsLastEvent.entrantid#
 	</cfquery>
-	<!---  23 below equals Masters 2010 --->
+	<!---  24 below equals US Open 2010 --->
 	<cfif #Trim(qLookupLastGroupID.maxgroupid)# neq "">
 		<cfquery datasource="#sDSN2#" name="qResetGolfer">
 			INSERT INTO tentrantgroup (entrantid, groupid, teamselectedid, finaltiebreakerscore, eventid, latestteamnetscore, madecut)
-			VALUES(#qAllTeamsLastEvent.entrantid#, #qLookupLastGroupID.maxgroupid#, -1, 0, 23, 0, 1)
+			VALUES(#qAllTeamsLastEvent.entrantid#, #qLookupLastGroupID.maxgroupid#, -1, 0, 24, 0, 1)
 		</cfquery>
 		<div>EntrantID: #qAllTeamsLastEvent.entrantid# ::: GroupID: #qLookupLastGroupID.maxgroupid#</div>
 	</cfif>
